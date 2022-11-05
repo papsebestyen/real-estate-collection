@@ -47,7 +47,6 @@ def parse_page_count(soup: "BeautifulSoup") -> int:
 
 
 if __name__ == "__main__":
-    project.depot.pull()
     
     soup = get_soup(url=ListingHandler.url_root)
     all_page = range(1, parse_page_count(soup=soup) + 1)
