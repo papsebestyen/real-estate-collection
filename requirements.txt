@@ -3,4 +3,4 @@ user_agent
 atqo
 requests
 pytz
-aswan
+aswan[remote]
