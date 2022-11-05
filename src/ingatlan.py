@@ -47,16 +47,18 @@ def parse_page_count(soup: "BeautifulSoup") -> int:
 
 
 if __name__ == "__main__":
+    project.depot.pull()
+    
     soup = get_soup(url=ListingHandler.url_root)
     all_page = range(1, parse_page_count(soup=soup) + 1)
 
-    project.start_monitor_process()
     project.run(
         urls_to_register={
             ListingHandler: [
                 add_url_params(ListingHandler.url_root, {"page": p}) for p in all_page
-            ]
+            ][:5]
         }
     )
     project.commit_current_run()
-    project.stop_monitor_process()
+
+    project.depot.push()
