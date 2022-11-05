@@ -55,7 +55,7 @@ if __name__ == "__main__":
         urls_to_register={
             ListingHandler: [
                 add_url_params(ListingHandler.url_root, {"page": p}) for p in all_page
-            ][:10]
+            ]
         }
     )
     project.commit_current_run()
