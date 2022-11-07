@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 from time import sleep
 from typing import TYPE_CHECKING
 
@@ -29,7 +30,7 @@ class AdHandler(aswan.RequestHandler):
 
 @project.register_handler
 class ListingHandler(aswan.RequestSoupHandler):
-    url_root = "https://ingatlan.com/lista/kiado+lakas+budapest"
+    url_root = "https://ingatlan.com/lista/kiado+lakas"
 
     def parse(self, soup: "BeautifulSoup"):
         sleep(SLEEP_TIME)
@@ -47,7 +48,7 @@ def parse_page_count(soup: "BeautifulSoup") -> int:
 
 
 if __name__ == "__main__":
-    
+
     soup = get_soup(url=ListingHandler.url_root)
     all_page = range(1, parse_page_count(soup=soup) + 1)
 
